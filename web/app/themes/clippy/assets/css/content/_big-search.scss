@@ -1,0 +1,108 @@
+div.big-search {
+  div.content {
+    z-index: 10000;
+    align-items: center;
+
+    h1 {
+      color: white;
+      @include margins($bottom: 20px 20px);
+    }
+
+    form {
+      position: relative;
+      @include forcedSize($width: 600px 300px);
+      @include margins($bottom: 20px 20px);
+
+      label {
+        display: none;
+      }
+
+      input[type=text] {
+        position: relative;
+        border-radius: 99px;
+        @include padding($left: 50px 50px, $top: 18px 18px, $right: 20px 20px, $bottom: 18px 18px);
+        border: 0;
+        outline: none;
+        box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.15);
+
+      }
+
+      button[type=submit] {
+        display: none;
+      }
+
+      &::before {
+        position: absolute;
+        content: ' ';
+        @include px(left 12px 12px);
+        top: 50%;
+        transform: translateY(-50%);
+        @include px(width 22px 22px, height 22px 22px);
+        background-image: url(../img/ui-icon-search.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        z-index: 12;
+      }
+    }
+  }
+}
+
+div.little-search {
+  display: flex;
+  align-items: center;
+  @include forcedSize($width: 330px 100%);
+
+  form {
+    position: relative;
+    @include forcedSize($width: 330px 100%);
+    margin:0;
+
+    label {
+      display: none;
+    }
+
+    input[type=text] {
+      border-radius: 99px;
+      @include fontSize(14px, 14px);
+      @include padding($left: 40px 40px, $top: 10px 10px, $right: 15px 15px, $bottom: 10px 10px);
+      border: 0;
+      outline: none;
+    }
+
+    button[type=submit] {
+      display: none;
+    }
+
+
+
+    &::before {
+      position: absolute;
+      content: ' ';
+      @include px(left 12px 12px);
+      top: 50%;
+      transform: translateY(-50%);
+      @include px(width 16px 16px, height 16px 16px);
+      background-image: url(../img/ui-icon-search.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      z-index: 12;
+    }
+  }
+}
+
+div.auto-search-results {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  height: auto;
+
+  div.searchwp-live-search-results-showing {
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    @include forcedSize($height: 450px 300px);
+    overflow: auto !important;
+  }
+}

@@ -1,0 +1,1 @@
+Archive<?php /**PATH /srv/www/kb.mediacloud.press/current/web/app/themes/clippy/views/templates/article-archive.blade.php ENDPATH**/ ?>

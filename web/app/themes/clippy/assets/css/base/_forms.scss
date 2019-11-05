@@ -1,0 +1,83 @@
+form {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  .form-row {
+    width: 100%;
+
+    @include  margins($bottom: 10px 10px);
+  }
+
+  .file-picker {
+    border: 1px solid rgba(66, 97, 130, 0.15);
+    border-radius: 8px;
+    background: #FFFFFF;
+    width: 100%;
+    color: $dark-blue;
+    @include  padding($vertical: 20px 20px, $horizontal: 15px 15px);
+
+    label {
+      color: rgba($dark-blue, 0.5);
+      margin-right: 20px;
+    }
+  }
+
+  .form-buttons {
+    @include  margins($top: 30px 30px);
+    text-align: center;
+  }
+
+  .recaptcha {
+    display: flex;
+    justify-content: center;
+  }
+
+  input[type=email], input[type=text], input[type=password] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    border: 1px solid rgba(66, 97, 130, 0.15);
+    border-radius: 8px;
+    background: #FFFFFF;
+    width: 100%;
+    color: $dark-blue;
+    @include  padding($vertical: 20px 20px, $horizontal: 15px 15px);
+
+    &::placeholder {
+      color: rgba($dark-blue, 0.5);
+    }
+
+    &:focus {
+      outline: 0;
+      border: 1px solid $light-blue;
+    }
+  }
+
+  textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+
+    border: 1px solid rgba(66, 97, 130, 0.15);
+    border-radius: 8px;
+    background: #FFFFFF;
+    width: 100%;
+    color: $dark-blue;
+    @include  padding($vertical: 20px 20px, $horizontal: 15px 15px);
+
+    &::placeholder {
+      color: rgba($dark-blue, 0.5);
+    }
+
+    &:focus {
+      outline: 0;
+      border: 1px solid $light-blue;
+    }
+  }
+}
+

@@ -1,0 +1,2 @@
+<?php
+// Leave this blank.

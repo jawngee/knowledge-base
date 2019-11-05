@@ -1,0 +1,42 @@
+.block-content {
+  @include forcedSize($width: $page-width $mobile-page-width);
+  display: flex;
+  flex-direction: column;
+}
+
+.pre-content-block {
+  background-color: $dark-blue;
+  color: $header-color;
+
+  display: flex;
+  justify-content: center;
+
+  div.content {
+    @extend .block-content;
+  }
+
+  &.first {
+    @include padding($top: 60px 30px);
+  }
+
+  &.last {
+    @include padding($bottom: 60px 30px);
+  }
+}
+
+.content-block {
+  display: flex;
+  justify-content: center;
+
+  div.content {
+    @extend .block-content;
+  }
+
+  &.first {
+    @include padding($top: 60px 30px);
+  }
+
+  &.last {
+    @include padding($bottom: 60px 30px);
+  }
+}

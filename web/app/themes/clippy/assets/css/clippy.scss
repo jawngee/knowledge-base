@@ -1,0 +1,29 @@
+$mq-responsive: true;
+$mq-breakpoints: (
+        mobile:  320px,
+        mobile-next:  321px,
+        iphone-x: 375px,
+        iphone-x-next: 376px,
+        iphone-xs: 415px,
+        phablet: 576px,
+        phablet-next: 577px,
+        tablet:  769px,
+        tablet-wide:  860px,
+        desktop: 980px,
+        nav-break: 1040px,
+        design: 1336px
+);
+
+$debug-breakpoints: true;
+
+@import "~sass-mq/mq";
+@import "~normalize-scss/sass/normalize";
+
+@import "~mediabox/dist/mediabox.css";
+
+@include normalize();
+
+@import "bourbon/bourbon";
+@import "base/base";
+@import "pages/pages";
+@import "content/content";

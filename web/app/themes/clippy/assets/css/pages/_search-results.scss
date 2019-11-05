@@ -1,0 +1,12 @@
+div.search-results {
+  width: $page-width;
+  @include padding($horizontal: 0 0);
+
+  @include mq($until: design) {
+    @include px(width $page-width $mobile-page-width);
+  }
+
+  header {
+    @include fontSize(24px, 24px);
+  }
+}

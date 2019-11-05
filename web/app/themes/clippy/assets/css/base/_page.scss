@@ -1,0 +1,75 @@
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+* {
+  -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
+  z-index: 1;
+
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-size: px2vw($base-font-size);
+
+  @include mq($from: phablet-next, $until: tablet) {
+    font-size: px2vw($base-font-size, $tablet-page-width);
+
+  }
+
+  @include mq($from: tablet, $until: desktop) {
+    font-size: px2vw($base-font-size, $desktop-page-width);
+
+  }
+
+  @include mq($until: phablet-next) {
+    font-size: $base-font-size;
+  }
+
+  @include mq($from: design) {
+    font-size: $base-font-size;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  position: relative;
+  z-index: 0;
+  background-color: $bg-color;
+  color: $font-color;
+  font-family: $font-stack-system;
+  //overflow-x: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @include padding($bottom: 172px 30px);
+  transform-origin: top center;
+  transition: transform 0.5s ease-out, opacity 0.5s linear;
+  @include mq($until: phablet-next) {
+    //overflow-x: hidden;
+  }
+}
+
+
+.mobile-only {
+  @include mq($from: phablet-next) {
+    display: none;
+  }
+}
+
+.desktop-only {
+  @include mq($until: phablet-next) {
+    display: none;
+  }
+}

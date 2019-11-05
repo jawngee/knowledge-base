@@ -1,0 +1,63 @@
+div.breadcrumbs {
+  background-color: rgba(0, 0, 0, 0.09);
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+
+  div.contents {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    @include mq($until: phablet-next) {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    @include padding($horizontal: 60px 20px, $vertical: 20px 20px);
+
+    ul {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      @include margins($bottom: 0 15px);
+
+      li {
+        display: block;
+        margin: 0;
+        padding: 0;
+        position: relative;
+
+        @include padding($right: 25px 12px);
+        @include margins($right: 15px 6px);
+
+        @include fontSize(16px, 13px);
+
+        span.current {
+          opacity: 0.66;
+        }
+
+        &:after {
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          line-height: 1;
+          color: $light-blue;
+          content: '>';
+        }
+
+        &:last-of-type {
+          &:after {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

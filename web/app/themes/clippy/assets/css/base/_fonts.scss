@@ -1,0 +1,300 @@
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-Black.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-Black.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-BlackItalic.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-BlackItalic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-Bold.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-Bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-BoldItalic.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-BoldItalic.woff2') format('woff2');
+  font-style: italic;
+  font-display: swap;
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-Heavy.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-Heavy.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-HeavyItalic.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-HeavyItalic.woff2') format('woff2');
+  font-style: italic;
+  font-display: swap;
+  font-weight: 800;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-Light.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-Light.woff2') format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-LightItalic.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-LightItalic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-Medium.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-Medium.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-MediumItalic.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-MediumItalic.woff2') format('woff2');
+  font-style: italic;
+  font-display: swap;
+  font-weight: 500;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-Regular.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-Regular.woff2') format('woff2');
+  font-display: swap;
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-RegularItalic.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-RegularItalic.woff2') format('woff2');
+  font-display: swap;
+  font-style: italic;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-Semibold.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-Semibold.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-SemiboldItalic.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-SemiboldItalic.woff2') format('woff2');
+  font-style: italic;
+  font-display: swap;
+  font-weight: 600;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-Thin.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-Thin.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-ThinItalic.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-ThinItalic.woff2') format('woff2');
+  font-style: italic;
+  font-display: swap;
+  font-weight: 200;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-Ultralight.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-Ultralight.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProDisplay';
+  src: url('../fonts/SF-Pro-Display-UltralightItalic.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Display-UltralightItalic.woff2') format('woff2');
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProText';
+  src: url('../fonts/SF-Pro-Text-Bold.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Text-Bold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProText';
+  src: url('../fonts/SF-Pro-Text-BoldItalic.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Text-BoldItalic.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProText';
+  src: url('../fonts/SF-Pro-Text-Heavy.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Text-Heavy.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
+  font-weight: 800;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProText';
+  src: url('../fonts/SF-Pro-Text-HeavyItalic.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Text-HeavyItalic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 800;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProText';
+  src: url('../fonts/SF-Pro-Text-Light.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Text-Light.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProText';
+  src: url('../fonts/SF-Pro-Text-LightItalic.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Text-LightItalic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProText';
+  src: url('../fonts/SF-Pro-Text-Medium.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Text-Medium.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProText';
+  src: url('../fonts/SF-Pro-Text-MediumItalic.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Text-MediumItalic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProText';
+  src: url('../fonts/SF-Pro-Text-Regular.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Text-Regular.woff2') format('woff2');
+  font-style: normal;
+  font-display: swap;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProText';
+  src: url('../fonts/SF-Pro-Text-RegularItalic.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Text-RegularItalic.woff2') format('woff2');
+  font-style: italic;
+  font-weight: normal;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProText';
+  src: url('../fonts/SF-Pro-Text-Semibold.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Text-Semibold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: 'SFProText';
+  src: url('../fonts/SF-Pro-Text-SemiboldItalic.woff2') format('woff2'),
+  url('../fonts/SF-Pro-Text-SemiboldItalic.woff') format('woff');
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  text-rendering: optimizeLegibility;
+}
+

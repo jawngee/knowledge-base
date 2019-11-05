@@ -1,0 +1,26 @@
+$design-width: 1336px;
+$page-width: 1110px;
+$grid-gutter: 20px;
+$mobile-grid-gutter: 20px;
+
+
+$desktop-page-width: 980px;
+$tablet-page-width: 768px;
+
+$mobile-design-width: 375px;
+$mobile-page-width: 336px;
+
+$column-width: ($page-width - ($grid-gutter * 11)) / 12;
+$mobile-column-width: ($mobile-page-width - ($mobile-grid-gutter * 3)) / 4;
+
+$navbar-height: 90px;
+$navdropdown-height: 395px;
+$border-radius: 12px;
+
+$mobile-navbar-height: 60px;
+$mobile-navdropdown-height: 395px;
+
+$footer-height: 280px;
+$mobile-footer-height: 280px;
+
+$mobile-nav-width: 300px;

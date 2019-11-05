@@ -1,0 +1,82 @@
+div.articles-list {
+  flex: 1;
+  div.section-header {
+    display: flex;
+    align-items: center;
+
+    picture {
+      @include forcedSize($height: 128px 128px);
+      object-fit: contain;
+
+      @include margins($right: 30px 30px);
+
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+
+    div {
+      h2 {
+        font-weight: 700;
+        text-transform: none;
+        @include margins($bottom: 5px 5px);
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+
+    border-bottom: 1px solid $light-gray;
+    @include padding($bottom: 40px 40px);
+    @include margins($bottom: 40px 40px);
+  }
+
+  ul.articles {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+
+    li {
+      padding: 0;
+      margin: 0;
+      display: block;
+      @include padding($bottom: 20px 20px);
+      @include margins($bottom: 40px 40px);
+
+      border-bottom: 1px solid $light-gray;
+
+      * { transition: color 0.125s linear; }
+
+      a.article {
+        color: unset;
+        display: block;
+      }
+
+      &:hover {
+        * { color: $light-blue; }
+      }
+    }
+  }
+
+  div.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    span.page-numbers {
+      border: 1px solid $light-gray;
+      background-color: $light-gray;
+      @include padding($horizontal: 15px 15px, $vertical: 10px 10px);
+      @include margins($right: 10px 10px);
+    }
+
+    a.page-numbers {
+      border: 1px solid $light-gray;
+      @include padding($horizontal: 15px 15px, $vertical: 10px 10px);
+      @include margins($right: 10px 10px);
+    }
+  }
+}

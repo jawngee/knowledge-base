@@ -1,0 +1,58 @@
+a {
+  color: black;
+  text-decoration: none;
+  transition: color 0.125s linear;
+  &:hover {
+    color: $lighter-blue;
+  }
+}
+
+.button {
+  border: 0 none;
+
+  background: linear-gradient(180deg, $lighter-blue 0%, $light-blue 100%);
+  color: white;
+  @include  padding($horizontal: 30px 30px, $vertical: 14px 14px);
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+  transition: color 0.125s linear, background 0.125s linear;
+
+  cursor: pointer;
+
+  &:hover {
+    background: linear-gradient(180deg, #FFFFFF 17.71%, #E8E8E8 100%);
+    color: $light-blue;
+  }
+
+  &.button-small {
+    @include  padding($horizontal: 20px 20px, $vertical: 8px 8px);
+    @include  fontSize(14px, 14px);
+  }
+
+  &.button-alt {
+    background: linear-gradient(180deg, #FFFFFF 17.71%, #E8E8E8 100%);
+    color: $light-blue;
+
+    &:hover {
+      background: linear-gradient(180deg, $lighter-blue 0%, $light-blue 100%);
+      color: white;
+    }
+  }
+}
+
+input.file-button[type=file] {
+  &.file-button-small {
+    &::-webkit-file-upload-button {
+      @include  padding($horizontal: 20px 20px, $vertical: 8px 8px);
+      @include  fontSize(14px, 14px);
+    }
+  }
+
+  &::-webkit-file-upload-button {
+    @extend .button;
+  }
+}

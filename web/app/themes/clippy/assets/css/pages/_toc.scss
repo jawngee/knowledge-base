@@ -1,0 +1,53 @@
+div.toc {
+  background-color: $light-gray;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+
+  @include px(min-width 250px 250px);
+  @include padding($left: 30px 30px, $right: 30px 30px, $top: 45px 45px, $bottom: 30px 30px);
+  @include margins($right: 60px 60px);
+
+  @include mq($until: phablet-next) {
+    display: none;
+  }
+
+  h4 {
+    @include padding($horizontal: 15px 15px);
+    color: black;
+    @include fontSize(16px, 16px);
+    @include margins($bottom: 20px 20px);
+    font-weight: 700;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+
+    li {
+      display: block;
+      @include fontSize(14px, 14px);
+      @include padding($all: 15px 15px);
+
+      @for $i from 1 through 6 {
+        &.level-#{$i} {
+          padding-left: 15px * $i;
+        }
+      }
+
+      a {
+        white-space: nowrap;
+      }
+
+      &.current {
+        background-color: $dark-blue;
+        a {
+          color: $lighter-blue;
+        }
+      }
+    }
+  }
+}

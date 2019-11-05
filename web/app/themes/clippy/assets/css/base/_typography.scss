@@ -1,0 +1,42 @@
+* {
+  font-family: 'SF Pro Text', 'SFProText', $font-stack-system;
+}
+
+p {
+  font-weight: 300;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'SF Pro Display', 'SFProDisplay', $font-stack-system;
+  font-weight: 500;
+  margin: 0;
+  color: $dark-blue;
+  letter-spacing: 1px;
+  padding: 0;
+}
+
+h1 {
+  line-height: 1.2;
+  @include fontSize(28px, 28px);
+  @include margins($bottom: 20px 20px);
+}
+
+h2 {
+  @include fontSize(24px, 24px);
+  @include margins($bottom: 20px 20px);
+  color: $dark-blue;
+  letter-spacing: 1px;
+}
+
+h3 {
+  @include fontSize(20px, 20px);
+  color: $dark-blue;
+  letter-spacing: 1px;
+}
+
+p {
+  @include fontSize(16px, 16px);
+  color: $dark-blue;
+  font-family: 'SFProText', 'SF Pro Text', $font-stack-system;
+  line-height: 1.5;
+}

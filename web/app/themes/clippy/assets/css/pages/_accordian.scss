@@ -1,0 +1,8 @@
+div.wp-block-coblocks-accordion {
+  @include margins($bottom: 40px 20px);
+  details {
+    summary {
+      background-color: rgba($dark-blue, 0.25);
+    }
+  }
+}

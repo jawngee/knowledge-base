@@ -1,0 +1,164 @@
+body > footer {
+  position: relative;
+  @include px(
+                  height $footer-height auto
+  );
+
+  @include padding($vertical: 0px 60px);
+
+
+
+  background-color: $footer-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+
+  border-top: 1px solid rgba($light-blue, 0.5);
+  transition: background-color 0.333s linear, transform 0.333s  ease-out;
+
+  .contents {
+    @include px(
+                    width $page-width $mobile-page-width,
+                    max-width $page-width $mobile-page-width
+    );
+
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include mq($until: phablet-next) {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin: 0;
+    }
+
+    div.mark {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include mq($until: phablet-next) {
+        flex-direction: row;
+        justify-content: flex-start;
+        margin: 0;
+        div.logo {
+          margin-right: 30px;
+        }
+      }
+
+      div.logo {
+        svg {
+          height: 100px;
+          width: auto;
+        }
+      }
+
+      nav {
+        display: flex;
+        @include margins($top: 15px 15px);
+
+        a {
+          font-size: 0;
+          display: block;
+          width: 28px;
+          height: 28px;
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+
+          margin: 0 7px;
+
+          @include mq($until: phablet-next) {
+            width: 36px;
+            height: 36px;
+          }
+
+          &.social-github {
+            background-image: url(../img/ui-social-github.svg);
+          }
+
+          &.social-twitter {
+            background-image: url(../img/ui-social-twitter.svg);
+          }
+
+          &.social-linkedin {
+            background-image: url(../img/ui-social-linkedin.svg);
+          }
+
+          &.social-youtube {
+            background-image: url(../img/ui-social-youtube.svg);
+          }
+        }
+      }
+    }
+
+    div.primary {
+      @include mq($until: phablet-next) {
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+
+      nav {
+        ul {
+          display: block;
+          margin: 0; padding: 0;
+          columns: 3;
+
+
+          @include mq($until: phablet-next) {
+            columns: 2;
+          }
+
+          li {
+            display: block;
+            margin: 0;
+            padding: 0;
+
+            a {
+              position: relative;
+              color: $light-blue;
+              @include fontSize(14px, 14px);
+              text-transform: uppercase;
+              @include margins($left: 30px 0px);
+              letter-spacing: 1px;
+              line-height: 2;
+              transition: color 0.25s linear;
+
+              &:before {
+                position: absolute;
+                content: '';
+                height: 1px;
+                width: 0%;
+                left: 0;
+                bottom: -4px;
+                background-color: white;
+                transition: width 0.25s linear;
+              }
+
+              &:hover {
+                color: white;
+                &:before {
+                  width: 100%;
+                }
+              }
+            }
+
+          }
+        }
+      }
+    }
+  }
+
+  div.copyright {
+    @include fontSize(12px, 12px);
+    @include padding($top: 25px 25px);
+    color: rgba(white, 0.5);
+    text-transform: uppercase;
+  }
+}

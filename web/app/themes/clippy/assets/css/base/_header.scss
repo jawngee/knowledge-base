@@ -1,0 +1,94 @@
+body > header {
+  height: $navbar-height;
+
+  z-index: 4;
+  background-color: $dark-blue;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: background-color 0.333s linear, transform 0.333s  ease-out;
+
+
+  div.contents {
+    width: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 4;
+
+    @include padding($horizontal: 60px 20px);
+
+    div.logo {
+      svg {
+        width: 85px;
+        height: auto;
+      }
+
+      @include margins($right: 40px 40px);
+    }
+
+    div.nav {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      @include mq($until: desktop) {
+        display: none;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+
+        a {
+          position: relative;
+          color: white;
+          @include fontSize(14px, 14px);
+          text-transform: uppercase;
+          @include margins($left: 30px 30px);
+          letter-spacing: 1px;
+          transition: color 0.25s linear;
+
+          &:before {
+            position: absolute;
+            content: '';
+            height: 2px;
+            width: 0%;
+            left: 50%;
+            bottom: -10px;
+            background-color: $light-blue;
+            transform: translateX(-50%);
+            transition: width 0.25s linear;
+          }
+
+          &:hover {
+            color: $light-blue;
+            &:before {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+
+      .button {
+        @include fontSize(15px, 15px);
+        @include margins($left: 44px 44px);
+
+        @include mq($until:desktop) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+body.hide-nav {
+  & > header {
+    transform: translateY(-1 * $navbar-height);
+  }
+}

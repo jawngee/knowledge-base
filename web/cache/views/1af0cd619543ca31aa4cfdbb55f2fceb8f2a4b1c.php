@@ -1,0 +1,1 @@
+<?php /**PATH /srv/www/kb.mediacloud.press/current/web/app/themes/clippy/views/partials/analytics-header.blade.php ENDPATH**/ ?>

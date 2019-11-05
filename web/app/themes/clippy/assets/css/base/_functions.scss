@@ -1,0 +1,394 @@
+
+/// Find first char which is not a space
+/// @access private
+/// @param {String} $string - String
+/// @param {String} $direction ['left'] - Either `left` or `right`
+/// @return {Number}
+@function first-index($string, $direction: 'left') {
+  @for $i from 1 through str-length($string) {
+    $index: if($direction == 'left', $i, -$i);
+
+    @if str-slice($string, $index, $index) != ' ' {
+      @return $index;
+    }
+  }
+
+  @return 0;
+}
+
+/// Return last index of `$needle` in `$string`.
+/// @access private
+/// @param {String} $string - string to search in
+/// @param {String} $needle - substring to search for
+/// @return {Number}
+@function str-last-index($string, $needle) {
+  $index: str-index($string, $needle);
+  $result: $index;
+
+  @if $index {
+    @for $i from $index + str-length($needle) through str-length($string) {
+      @if str-slice($string, $i, $i + str-length($needle) - 1) == $needle {
+        $result: $i;
+      }
+    }
+  }
+
+  @return $result;
+}
+
+
+/// Trim `$string`
+/// @access private
+/// @param {String} $string - String to trim
+/// @return {String}
+@function trim($string) {
+  @return str-slice(
+                  $string,
+                  first-index($string, 'left'),
+                  first-index($string, 'right')
+  );
+}
+
+
+@function is-px($val) {
+  @if (type_of($val) != 'number') {
+    @return false;
+  }
+
+  @if (unit($val) == 'px') {
+    @return true;
+  }
+
+  @return false;
+}
+
+@function mq-px2rem($px, $base-font-size: $mq-base-font-size) {
+  @if unitless($px) {
+    @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels.";
+    @return mq-px2rem($px * 1px, $base-font-size);
+  } @else if unit($px) == rem {
+    @return $px;
+  }
+  @return ($px / $base-font-size) * 1rem;
+}
+
+@function px2vw($px, $width: $design-width) {
+  @return (($px / $width) * 100) * 1vw;
+}
+
+@function mobile-px2vw($px, $width: $mobile-design-width) {
+  @return (($px / $width) * 100) * 1vw;
+}
+
+@function mobile-px2rem($px, $base-font-size: 11px) {
+  @if unitless($px) {
+    @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels.";
+    @return mobile-px2rem($px * 1px, $base-font-size);
+  } @else if unit($px) == rem {
+    @return $px;
+  }
+  @return ($px / $base-font-size) * 1rem;
+}
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@function has-important($arg) {
+  $count: length($arg);
+  @each $part in $arg {
+    @if ($part == '!important') {
+      @return '!important';
+    }
+  }
+
+  @return '';
+}
+
+@mixin fontSize($desktop, $mobile) {
+  @include mq($until: phablet-next) {
+    font-size: mq-px2rem($mobile);
+  }
+
+  @include mq($from: phablet-next) {
+    font-size: mq-px2rem($desktop);
+  }
+}
+
+@mixin forcedSize($width:false, $height:false) {
+  $width1: $width;
+  $width2: $width;
+  $importantW: '';
+
+  $height1: $height;
+  $height2: $height;
+  $importantH: '';
+
+  @if (length($width) >= 2) {
+    $width1: nth($width, 1);
+    $width2: nth($width, 2);
+    $importantW: has-important($width);
+  }
+
+  @if (length($height) >= 2) {
+    $height1: nth($height, 1);
+    $height2: nth($height, 2);
+    $importantH: has-important($height);
+  }
+
+  @if ($width and $height) {
+    @include px(width $width1 $width2 #{$importantW}, min-width $width1 $width2 #{$importantW}, max-width $width1 $width2 #{$importantW}, height $height1 $height2 #{$importantH}, min-height $height1 $height2 #{$importantH}, max-height $height1 $height2 #{$importantH});
+  } @else if ($width) {
+    @include px(width $width1 $width2 #{$importantW}, min-width $width1 $width2 #{$importantW}, max-width $width1 $width2 #{$importantW});
+  } @else if ($height) {
+    @include px(height $height1 $height2 #{$importantH}, min-height $height1 $height2 #{$importantH}, max-height $height1 $height2 #{$importantH});
+  }
+}
+
+@mixin mquery($property, $args...) {
+  $first-break: false;
+  $last-break: false;
+  $i: 1;
+  $val: '';
+  $important: '';
+
+  @each $tuple in $args {
+    $break: nth($tuple, 1);
+    $val: nth($tuple, 2);
+    $convertedVal: $val;
+    $important: has-important($tuple);
+
+    @if($first-break == false) {
+      $first-break: $break;
+    }
+
+    @debug "break: #{$break}   last-break: #{$last-break}   i: #{$i}   val: #{$val}   important: #{$important}";
+
+    @if(is-px($val)) {
+      @if($property == 'font-size') {
+        @debug "font-size";
+        $convertedVal: mq-px2rem($val);
+      } @else {
+        @if($break == phablet-next) {
+          $convertedVal: mobile-px2vw($val);
+        } @else {
+          $convertedVal: px2vw($val);
+        }
+      }
+    }
+
+    @if($last-break) {
+      @debug "from #{$last-break}   until: #{$break}   val #{$convertedVal}";
+      @include mq($from: $last-break, $until: $break) {
+        #{$property}: $convertedVal #{$important};
+      }
+    } @else {
+      @debug "until #{$break}  val #{$convertedVal}";
+      @include mq($until: $break) {
+        #{$property}: $convertedVal #{$important};
+      }
+    }
+
+    $last-break: $break;
+    $i: $i + 1;
+  }
+
+  @if($last-break and ($first-break != $last-break)) {
+      @debug "from #{$last-break}  val #{$val}";
+      @include mq($from: $last-break) {
+        #{$property}: $val #{$important};
+      }
+  }
+}
+
+@mixin px($args...) {
+  @each $tuple in $args {
+    $count: (length($tuple) - 1);
+    $important: has-important($tuple);
+    @if ($important != '') {
+      $count: ($count - 1);
+    }
+
+    @if ($count > 2) {
+      @if(nth($tuple, 4) == '') {
+        $count: ($count - 1);
+      }
+    }
+
+    $val: nth($tuple, 2);
+
+    @if(is-px($val)) {
+      #{nth($tuple,1)}: px2vw($val) #{$important};
+    } @else {
+      #{nth($tuple,1)}: #{$val} #{$important};
+    }
+
+    @include mq($from: design) {
+      #{nth($tuple,1)}: nth($tuple, 2) #{$important};
+    }
+
+    @if ($count > 2) {
+      $phab-val: nth($tuple, 3);
+      $mobile-val: nth($tuple, 4);
+
+      @include mq($until: iphone-xs) {
+        @if(is-px($mobile-val)) {
+          #{nth($tuple,1)}: mobile-px2vw($mobile-val) #{$important};
+        } @else {
+          #{nth($tuple,1)}: #{$mobile-val} #{$important};
+        }
+      }
+
+      @include mq($from: iphone-xs, $until: phablet-next) {
+        @if(is-px($phab-val)) {
+          #{nth($tuple,1)}: mobile-px2vw($phab-val) #{$important};
+        } @else {
+          #{nth($tuple,1)}: #{$phab-val} #{$important};
+        }
+      }
+    } @else {
+      @if($count > 1) {
+        $val: nth($tuple, 3);
+      }
+
+      @include mq($until: phablet-next) {
+        @if(is-px($val)) {
+          #{nth($tuple,1)}: mobile-px2vw($val) #{$important};
+        } @else {
+          #{nth($tuple,1)}: #{$val} #{$important};
+        }
+      }
+    }
+  }
+}
+
+@mixin rem($font-size...) {
+  $count: length($font-size);
+  $important: '';
+
+  @each $size in $font-size {
+    @if ($size == '!important') {
+      $important: '!important';
+    }
+  }
+
+  @if ($important != '') {
+    $count: ($count - 1);
+  }
+
+  font-size: mq-px2rem(nth($font-size, 1)) #{$important};
+
+  @if ($count == 2) {
+    @include mq($until: iphone-xs) {
+      font-size: mq-px2rem(nth($font-size, 2), $mobile-font-size) #{$important};
+    }
+
+    @include mq($from: iphone-xs, $until: phablet-next) {
+      font-size: mq-px2rem(nth($font-size, 2), $mobile-font-size) #{$important};
+    }
+  }
+
+  @if ($count == 3) {
+    @include mq($until: iphone-xs) {
+      font-size: mq-px2rem(nth($font-size, 3), $mobile-font-size) #{$important};
+    }
+
+    @include mq($from: iphone-xs, $until: phablet-next) {
+      font-size: mq-px2rem(nth($font-size, 2), $mobile-font-size) #{$important};
+    }
+  }
+}
+
+@function cols-px($columns) {
+  @return ($column-width * $columns) + (($columns - 1) * $grid-gutter);
+}
+
+@function cols-vw($columns) {
+  @return px2vw(cols-px($columns));
+}
+
+@function mobile-cols-px($columns, $include-last-gap:false) {
+  @if $include-last-gap {
+    @return ($mobile-column-width * $columns) + (($columns) * $mobile-grid-gutter);
+  } @else {
+    @return ($mobile-column-width * $columns) + (($columns - 1) * $mobile-grid-gutter);
+  }
+}
+
+@function mobile-cols-vw($columns) {
+  @return px2vw(mobile-cols-px($columns));
+}
+
+@mixin padding($all:false, $left: false, $top: false, $right: false, $bottom: false, $vertical: false, $horizontal: false) {
+  @if $all {
+    $important: has-important($all);
+    @include  px(padding nth($all, 1) nth($all, 2) #{$important});
+  }
+
+  @if $vertical {
+    $important: has-important($all);
+    @include  px(padding-bottom nth($vertical, 1) nth($vertical, 2) #{$important}, padding-top nth($vertical, 1) nth($vertical, 2) #{$important});
+  }
+
+  @if $horizontal {
+    $important: has-important($horizontal);
+    @include  px(padding-left nth($horizontal, 1) nth($horizontal, 2) #{$important}, padding-right nth($horizontal, 1) nth($horizontal, 2) #{$important});
+  }
+
+  @if $left {
+    $important: has-important($left);
+    @include  px(padding-left nth($left, 1) nth($left, 2) #{$important});
+  }
+
+  @if $top {
+    $important: has-important($top);
+    @include  px(padding-top nth($top, 1) nth($top, 2) #{$important});
+  }
+
+  @if $right {
+    $important: has-important($right);
+    @include  px(padding-right nth($right, 1) nth($right, 2) #{$important});
+  }
+
+  @if $bottom {
+    $important: has-important($bottom);
+    @include  px(padding-bottom nth($bottom, 1) nth($bottom, 2) #{$important});
+  }
+}
+
+@mixin margins($all:false, $left: false, $top: false, $right: false, $bottom: false, $vertical: false, $horizontal: false) {
+  @if $all {
+    $important: has-important($all);
+    @include  px(margin nth($all, 1) nth($all, 2) #{$important});
+  }
+
+  @if $vertical {
+    $important: has-important($vertical);
+    @include  px(margin-top nth($vertical, 1) nth($vertical, 2) #{$important}, margin-bottom nth($vertical, 1) nth($vertical, 2) #{$important});
+  }
+
+  @if $horizontal {
+    $important: has-important($horizontal);
+    @include  px(margin-left nth($horizontal, 1) nth($horizontal, 2) #{$important}, margin-right nth($horizontal, 1) nth($horizontal, 2) #{$important});
+  }
+
+  @if $left {
+    $important: has-important($left);
+    @include  px(margin-left nth($left, 1) nth($left, 2) #{$important});
+  }
+
+  @if $top {
+    $important: has-important($top);
+    @include  px(margin-top nth($top, 1) nth($top, 2) #{$important});
+  }
+
+  @if $right {
+    $important: has-important($right);
+    @include  px(margin-right nth($right, 1) nth($right, 2) #{$important});
+  }
+
+  @if $bottom {
+    $important: has-important($bottom);
+    @include  px(margin-bottom nth($bottom, 1) nth($bottom, 2) #{$important});
+  }
+}

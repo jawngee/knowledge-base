@@ -1,0 +1,8 @@
+div.generic-page {
+  width: $page-width;
+  @include padding($horizontal: 0 0);
+
+  @include mq($until: design) {
+    @include px(width $page-width $mobile-page-width);
+  }
+}

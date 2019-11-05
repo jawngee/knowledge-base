@@ -1,0 +1,98 @@
+@function im-breakpoints-to-json() {
+  $breakpoints-json: ();
+
+  @each $name, $value in $mq-breakpoints {
+    $breakpoint: '{"name":"#{$name}", "size":#{strip-unit($value)}}';
+    $breakpoints-json: append($breakpoints-json, $breakpoint, 'comma');
+  }
+
+  @return '[#{$breakpoints-json}]';
+}
+
+body {
+  #breakpoints {
+    display: none;
+
+    &::after {
+      content: im-breakpoints-to-json();
+      display: block;
+      height: 0;
+      overflow: hidden;
+      width: 0;
+    }
+  }
+
+  #breakpoint-debug {
+    display: none;
+  }
+}
+
+body.debug {
+  #breakpoint-debug {
+    @if not $debug-breakpoints {
+      display: none;
+    } @else {
+      display: block;
+    }
+
+    background-color: #FCF8E3;
+    border-bottom: 1px solid #FBEED5;
+    border-left: 1px solid #FBEED5;
+    z-index: 10000;
+    color: #C09853;
+    font: small-caption;
+    padding: 3px 6px;
+    pointer-events: none;
+    position: fixed;
+    left: 50%; top: 0px;
+    transform: translateX(-50%);
+  }
+}
+
+
+div.grid-debugger {
+  display: none;
+
+  position: fixed;
+  left: 0px; top:0px; right: 0px; bottom: 0px;
+  pointer-events: none;
+  z-index: 1000;
+
+  div.grid, div.grid-mobile {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    @include  px(
+      grid-column-gap $grid-gutter $mobile-grid-gutter,
+      width $page-width $mobile-page-width,
+      max-width $page-width $mobile-page-width
+    );
+
+    pointer-events: none;
+    height: 100%;
+    margin: 0 auto;
+
+    div {
+      position: relative;
+      display: block;
+      background-color: rgba(red, 0.0625);
+      height: 100%;
+      pointer-events: none;
+    }
+  }
+
+  div.grid {
+    @include mq($until: iphone-x-next) {
+      display: none;
+    }
+  }
+
+  div.grid-mobile {
+    grid-template-columns: repeat(4, 1fr);
+    @include mq($from: iphone-x-next) {
+      display: none;
+    }
+  }
+}
