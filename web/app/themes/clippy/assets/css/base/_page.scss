@@ -73,3 +73,7 @@ main {
     display: none;
   }
 }
+
+body.no-scroll {
+  overflow: hidden;
+}

@@ -5,10 +5,7 @@ div.page {
   @include padding($top: 60px 30px);
 }
 
-@import "toc";
-@import "article-list";
 @import "article-category-landing";
 @import "article";
 @import "search-results";
 @import "generic";
-@import "accordian";

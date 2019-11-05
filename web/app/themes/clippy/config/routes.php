@@ -4,7 +4,7 @@ return [
 	/*
 	 * Make our template pages not viewable by the public
 	 */
-	'get:templates/{which}' => [
+	'get:/templates/{which}' => [
 		'early' => true,
 		"requirements" => [
 			'which' => '.*'
@@ -12,5 +12,9 @@ return [
 		'function' => function() {
 			return \Symfony\Component\HttpFoundation\RedirectResponse::create('/');
 		}
+	],
+	'post:issues/submit' => [
+		'early' => true,
+		'controller' => "\\ClippyKB\\Controllers\\IssuesController@submitIssue"
 	]
 ];

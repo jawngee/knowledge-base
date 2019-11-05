@@ -2,6 +2,7 @@
 <html {{ language_attributes() }} lang="en">
     <head>
         @include('partials.analytics-header')
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <meta charset="{{ bloginfo( 'charset' ) }}">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="distribution" content="global" />
@@ -13,6 +14,10 @@
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#FC5047s">
         <meta name="msapplication-TileColor" content="#da532c">
         <meta name="theme-color" content="#ffffff">
+
+        @if(!empty(getenv('CRISP_BEACON_ID')))
+        <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="{{getenv('CRISP_BEACON_ID')}}";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+        @endif
 
         {{-- @header outputs the wordpress header stuff --}}
         @header
@@ -67,6 +72,31 @@
                 &copy; {{date('Y')}} interfacelab LLC, all rights reserved.
             </div>
         </footer>
+
+        <div id="submit-issue-modal" class="hidden">
+            <form>
+                <input type="hidden" name="nonce" value="{{wp_create_nonce('submit-issue')}}">
+                <header>
+                    Have a question?  Ran into a bug?  Let us know about it!
+                </header>
+                <div class="form-row">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-row">
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-row">
+                    <textarea name="issue" placeholder="Let us know about your issue or bug.  Please be as descriptive as possible." rows="9" required></textarea>
+                </div>
+                <div class="recaptcha">
+                    <div class="g-recaptcha" data-sitekey="{{env('RECAPTCHA_SITE')}}"></div>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="cancel-modal">Cancel</a>
+                    <button type="submit" class="button">Send</button>
+                </div>
+            </form>
+        </div>
 
         {{-- @footer outputs all the WordPress footer stuff --}}
         @footer

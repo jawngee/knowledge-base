@@ -1,0 +1,48 @@
+#submit-issue-modal {
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;
+  background-color: rgba(0,0,0,0.66);
+  z-index: 20000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: opacity 0.25s linear;
+
+  form {
+    background-color: white;
+    width: 80vw;
+    max-width: 600px;
+    transition: transform 0.25s linear;
+
+    @include px(border-radius 10px 10px);
+    @include padding($all: 40px 20px);
+
+    header {
+      @include fontSize(18px, 18px);
+      font-weight: 700;
+      @include margins($bottom: 30px 15px);
+    }
+
+    div.buttons {
+      @include margins($top: 20px 20px);
+
+      a {
+        color: $light-blue;
+      }
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &.hidden {
+    pointer-events: none;
+    opacity: 0;
+    form {
+      transform: scale(0.9);
+    }
+  }
+}

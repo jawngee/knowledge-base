@@ -1409,6 +1409,10 @@ main {
   }
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 body > header {
   height: 90px;
   z-index: 4;
@@ -1896,43 +1900,6 @@ div.grid-debugger div.grid-mobile {
   }
 }
 
-div.page {
-  position: relative;
-  padding-left: 4.4910179641vw;
-  padding-right: 4.4910179641vw;
-  padding-top: 4.4910179641vw;
-}
-@media (min-width: 83.5em) {
-  div.page {
-    padding-left: 60px;
-  }
-}
-@media (max-width: 36.0525em) {
-  div.page {
-    padding-left: 5.3333333333vw;
-  }
-}
-@media (min-width: 83.5em) {
-  div.page {
-    padding-right: 60px;
-  }
-}
-@media (max-width: 36.0525em) {
-  div.page {
-    padding-right: 5.3333333333vw;
-  }
-}
-@media (min-width: 83.5em) {
-  div.page {
-    padding-top: 60px;
-  }
-}
-@media (max-width: 36.0525em) {
-  div.page {
-    padding-top: 8vw;
-  }
-}
-
 div.toc {
   background-color: rgba(0, 0, 0, 0.07);
   position: -webkit-sticky;
@@ -2114,6 +2081,23 @@ div.toc ul li.current {
 }
 div.toc ul li.current a {
   color: #62C6F1;
+}
+
+div.wp-block-coblocks-accordion {
+  margin-bottom: 2.994011976vw;
+}
+@media (min-width: 83.5em) {
+  div.wp-block-coblocks-accordion {
+    margin-bottom: 40px;
+  }
+}
+@media (max-width: 36.0525em) {
+  div.wp-block-coblocks-accordion {
+    margin-bottom: 5.3333333333vw;
+  }
+}
+div.wp-block-coblocks-accordion details summary {
+  background-color: rgba(58, 86, 116, 0.25);
 }
 
 div.articles-list {
@@ -2379,6 +2363,135 @@ div.articles-list div.pagination a.page-numbers {
 @media (max-width: 36.0525em) {
   div.articles-list div.pagination a.page-numbers {
     margin-right: 2.6666666667vw;
+  }
+}
+
+#submit-issue-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.66);
+  z-index: 20000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.25s linear;
+}
+#submit-issue-modal form {
+  background-color: white;
+  width: 80vw;
+  max-width: 600px;
+  transition: transform 0.25s linear;
+  border-radius: 0.748502994vw;
+  padding: 2.994011976vw;
+}
+@media (min-width: 83.5em) {
+  #submit-issue-modal form {
+    border-radius: 10px;
+  }
+}
+@media (max-width: 36.0525em) {
+  #submit-issue-modal form {
+    border-radius: 2.6666666667vw;
+  }
+}
+@media (min-width: 83.5em) {
+  #submit-issue-modal form {
+    padding: 40px;
+  }
+}
+@media (max-width: 36.0525em) {
+  #submit-issue-modal form {
+    padding: 5.3333333333vw;
+  }
+}
+#submit-issue-modal form header {
+  font-weight: 700;
+  margin-bottom: 2.245508982vw;
+}
+@media (max-width: 36.0525em) {
+  #submit-issue-modal form header {
+    font-size: 1.125rem;
+  }
+}
+@media (min-width: 36.0625em) {
+  #submit-issue-modal form header {
+    font-size: 1.125rem;
+  }
+}
+@media (min-width: 83.5em) {
+  #submit-issue-modal form header {
+    margin-bottom: 30px;
+  }
+}
+@media (max-width: 36.0525em) {
+  #submit-issue-modal form header {
+    margin-bottom: 4vw;
+  }
+}
+#submit-issue-modal form div.buttons {
+  margin-top: 1.497005988vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (min-width: 83.5em) {
+  #submit-issue-modal form div.buttons {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 36.0525em) {
+  #submit-issue-modal form div.buttons {
+    margin-top: 5.3333333333vw;
+  }
+}
+#submit-issue-modal form div.buttons a {
+  color: #50ADE2;
+}
+#submit-issue-modal.hidden {
+  pointer-events: none;
+  opacity: 0;
+}
+#submit-issue-modal.hidden form {
+  transform: scale(0.9);
+}
+
+div.page {
+  position: relative;
+  padding-left: 4.4910179641vw;
+  padding-right: 4.4910179641vw;
+  padding-top: 4.4910179641vw;
+}
+@media (min-width: 83.5em) {
+  div.page {
+    padding-left: 60px;
+  }
+}
+@media (max-width: 36.0525em) {
+  div.page {
+    padding-left: 5.3333333333vw;
+  }
+}
+@media (min-width: 83.5em) {
+  div.page {
+    padding-right: 60px;
+  }
+}
+@media (max-width: 36.0525em) {
+  div.page {
+    padding-right: 5.3333333333vw;
+  }
+}
+@media (min-width: 83.5em) {
+  div.page {
+    padding-top: 60px;
+  }
+}
+@media (max-width: 36.0525em) {
+  div.page {
+    padding-top: 8vw;
   }
 }
 
@@ -2836,23 +2949,6 @@ div.generic-page {
   div.generic-page {
     width: 89.6vw;
   }
-}
-
-div.wp-block-coblocks-accordion {
-  margin-bottom: 2.994011976vw;
-}
-@media (min-width: 83.5em) {
-  div.wp-block-coblocks-accordion {
-    margin-bottom: 40px;
-  }
-}
-@media (max-width: 36.0525em) {
-  div.wp-block-coblocks-accordion {
-    margin-bottom: 5.3333333333vw;
-  }
-}
-div.wp-block-coblocks-accordion details summary {
-  background-color: rgba(58, 86, 116, 0.25);
 }
 
 .block-content, .content-block div.content, .pre-content-block div.content {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "823837fefd8e9917bd392d2301b6dc1e",
+    "content-hash": "636e923ec8f2a902efd7484042cc620c",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -194,6 +194,43 @@
                 "zikula"
             ],
             "time": "2019-08-12T15:00:31+00:00"
+        },
+        {
+            "name": "crispchat/php-crisp-api",
+            "version": "1.5.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crisp-im/php-crisp-api.git",
+                "reference": "32c338a7b26dd16b526234b042d664f41e1550af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/crisp-im/php-crisp-api/zipball/32c338a7b26dd16b526234b042d664f41e1550af",
+                "reference": "32c338a7b26dd16b526234b042d664f41e1550af",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "tcdent/php-restclient": "^0.1.7"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "crisp.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Baptiste Jamin",
+                    "email": "baptiste@crisp.chat"
+                }
+            ],
+            "description": "Crisp API PHP Wrapper",
+            "time": "2019-02-24T21:45:46+00:00"
         },
         {
             "name": "defuse/php-encryption",
@@ -1077,6 +1114,53 @@
                 "proto"
             ],
             "time": "2019-10-03T20:08:37+00:00"
+        },
+        {
+            "name": "google/recaptcha",
+            "version": "1.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/google/recaptcha.git",
+                "reference": "98c4a6573b27e8b0990ea8789c74ea378795134c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/google/recaptcha/zipball/98c4a6573b27e8b0990ea8789c74ea378795134c",
+                "reference": "98c4a6573b27e8b0990ea8789c74ea378795134c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.2.20|^2.15",
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^4.8.36|^5.7.27|^6.59|^7.5.11"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ReCaptcha\\": "src/ReCaptcha"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Client library for reCAPTCHA, a free service that protects websites from spam and abuse.",
+            "homepage": "https://www.google.com/recaptcha/",
+            "keywords": [
+                "Abuse",
+                "captcha",
+                "recaptcha",
+                "spam"
+            ],
+            "time": "2019-08-16T15:48:25+00:00"
         },
         {
             "name": "grpc/grpc",
@@ -4266,16 +4350,16 @@
         },
         {
             "name": "stem-press/stem-content",
-            "version": "0.4.3",
+            "version": "0.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stem-press/stem-content.git",
-                "reference": "ff8ec6be7c4c3f1b8ad59303412d037d21e00fa4"
+                "reference": "33426888197699752161d9ac6858b652d206a77c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stem-press/stem-content/zipball/ff8ec6be7c4c3f1b8ad59303412d037d21e00fa4",
-                "reference": "ff8ec6be7c4c3f1b8ad59303412d037d21e00fa4",
+                "url": "https://api.github.com/repos/stem-press/stem-content/zipball/33426888197699752161d9ac6858b652d206a77c",
+                "reference": "33426888197699752161d9ac6858b652d206a77c",
                 "shasum": ""
             },
             "require": {
@@ -4302,7 +4386,7 @@
                 "content",
                 "stem"
             ],
-            "time": "2019-06-07T18:19:48+00:00"
+            "time": "2019-11-05T08:49:00+00:00"
         },
         {
             "name": "stoutlogic/acf-builder",
@@ -5301,6 +5385,58 @@
             "time": "2019-10-13T12:02:04+00:00"
         },
         {
+            "name": "tcdent/php-restclient",
+            "version": "0.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tcdent/php-restclient.git",
+                "reference": "4522e8518eaef770d715977fcb45f187f8ad7499"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tcdent/php-restclient/zipball/4522e8518eaef770d715977fcb45f187f8ad7499",
+                "reference": "4522e8518eaef770d715977fcb45f187f8ad7499",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "php": ">=5.5.7",
+                "phpunit/phpunit": ">=4.5"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "restclient.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Travis Dent",
+                    "email": "tcdent@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A generic REST API client for PHP",
+            "homepage": "http://github.com/tcdent/php-restclient",
+            "keywords": [
+                "api",
+                "client",
+                "curl",
+                "json",
+                "rest",
+                "xml"
+            ],
+            "time": "2017-09-07T20:44:36+00:00"
+        },
+        {
             "name": "tecnickcom/tcpdf",
             "version": "6.3.2",
             "source": {
@@ -5737,6 +5873,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/relevanssi/"
+        },
+        {
+            "name": "wpackagist-plugin/searchwp-live-ajax-search",
+            "version": "1.4.4",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/searchwp-live-ajax-search/",
+                "reference": "tags/1.4.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/searchwp-live-ajax-search.1.4.4.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/searchwp-live-ajax-search/"
         },
         {
             "name": "wpackagist-plugin/taxonomy-terms-order",

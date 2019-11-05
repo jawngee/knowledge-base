@@ -108,6 +108,75 @@
 
 /***/ }),
 
+/***/ "./js/Components/SubmitIssue.ts":
+/*!**************************************!*\
+  !*** ./js/Components/SubmitIssue.ts ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var SubmitIssue = /** @class */ (function () {
+    function SubmitIssue() {
+        var _this = this;
+        document.querySelectorAll('a.submit-issue').forEach(function (ele) {
+            ele.addEventListener('click', function (e) {
+                e.preventDefault();
+                _this.show();
+                return false;
+            });
+        });
+        this.modal = document.getElementById('submit-issue-modal');
+        this.form = this.modal.querySelector('form');
+        this.form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            _this.submitIssue();
+            return false;
+        });
+        this.modal.querySelector('a.cancel-modal').addEventListener('click', function (e) {
+            e.preventDefault();
+            _this.hide();
+            return false;
+        });
+    }
+    SubmitIssue.prototype.show = function () {
+        document.body.classList.add('no-scroll');
+        grecaptcha.reset();
+        this.form.reset();
+        this.modal.classList.remove('hidden');
+    };
+    SubmitIssue.prototype.hide = function () {
+        document.body.classList.remove('no-scroll');
+        this.modal.classList.add('hidden');
+    };
+    SubmitIssue.prototype.submitIssue = function () {
+        var formData = new FormData(this.form);
+        jQuery.ajax({
+            url: '/issues/submit',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: this.submitSuccess.bind(this),
+            error: this.submitError.bind(this)
+        });
+    };
+    SubmitIssue.prototype.submitSuccess = function (response) {
+        alert("Thanks for submitting your question or issue!  All follow up will be via email.");
+        this.hide();
+    };
+    SubmitIssue.prototype.submitError = function () {
+        alert("There was an error submitting your question or issue.  Please wait a few minutes and then try again.");
+    };
+    return SubmitIssue;
+}());
+exports.default = SubmitIssue;
+
+
+/***/ }),
+
 /***/ "./js/Nav/AutoScroller.ts":
 /*!********************************!*\
   !*** ./js/Nav/AutoScroller.ts ***!
@@ -373,9 +442,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Breakpoints_1 = __webpack_require__(/*! ./Tools/Breakpoints */ "./js/Tools/Breakpoints.ts");
 var AutoScroller_1 = __webpack_require__(/*! ./Nav/AutoScroller */ "./js/Nav/AutoScroller.ts");
 var TOC_1 = __webpack_require__(/*! ./Nav/TOC/TOC */ "./js/Nav/TOC/TOC.ts");
+var SubmitIssue_1 = __webpack_require__(/*! ./Components/SubmitIssue */ "./js/Components/SubmitIssue.ts");
 var breakpoints = null;
 document.addEventListener('DOMContentLoaded', function () {
     breakpoints = new Breakpoints_1.default();
+    new SubmitIssue_1.default();
     TOC_1.default.bind();
 });
 AutoScroller_1.default.init();
