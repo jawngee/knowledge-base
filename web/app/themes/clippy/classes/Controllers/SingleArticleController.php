@@ -6,6 +6,7 @@ use ClippyKB\Content\HelpTopicTerm;
 use Stem\Content\Controllers\ContentPostController;
 use Stem\Core\Context;
 use Stem\Models\Term;
+use Symfony\Component\HttpFoundation\Request;
 
 class SingleArticleController extends ContentPostController {
 	protected $targetPagePath = 'templates/article';
@@ -14,7 +15,7 @@ class SingleArticleController extends ContentPostController {
 		parent::__construct($context, 'templates.article');
 	}
 
-	public function addIndexData($data) {
+	public function getIndex(Request $request) {
 		$terms = $this->post->tax('article-category');
 		$currentTerm = array_shift($terms);
 
@@ -26,8 +27,23 @@ class SingleArticleController extends ContentPostController {
 
 		$termList[] = new HelpTopicTerm(\WP_Term::get_instance($currentTerm->id()));
 
-		$data['termList'] = $termList;
+		$data = $this->addIndexData([
+			'errors' => [],
+			'params' => $request->request,
+			'post' => $this->post,
+			'page' => $this,
+			'termList' => $termList
+		]);
 
-		return parent::addIndexData($data);
+		if ($request->query->has('json')) {
+			wp_send_json([
+				'title' => $this->post->title,
+				'content' => $this->post->content,
+				'related' => [] // TODO: Related articles
+			], 200);
+		} else {
+			return $this->renderContent($request->query->get('partial'), $request->query->get('partial-target'), $this->template, $data);
+		}
+
 	}
 }
