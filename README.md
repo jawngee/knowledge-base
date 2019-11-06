@@ -4,7 +4,7 @@
 
 This is the knowledge base app being used on [Media Cloud Support](https://kb.mediacloud.press/).  
 
-I built this out of frustration with the various feature starved help desk knowledge bases that we tested from a large number of help desk services.
+I built this in a couple of days out of frustration with the various feature starved help desk knowledge bases that we tested from a large number of help desk services.  Frankly, after going through that process I'm kind of stunned how much they charge for such poor offerings.
 
 This is a WordPress app, built using Bedrock/Trellis and the [Stem Application Framework](https://github.com/stem-press/stem).
 
@@ -76,7 +76,7 @@ The theme assets are located in the theme's `assets` folder.  In a terminal chan
 
 All of the javascript is built using typescript, jQuery is only used for ajax because I'm lazy.
 
-##How The Theme Is Built
+## How The Theme Is Built
 The theme is built using Stem, which is our in-house app framework for WordPress.  There is no formal documentation for it, though the source is liberally commented and the structure should make sense if you've ever worked with Laravel, Symfony or another MVC framework.
 
 The top level directories in the theme:
