@@ -4,7 +4,7 @@
 
 This is the knowledge base app being used on [Media Cloud Support](https://kb.mediacloud.press/).  
 
-I built this in a couple of days out of frustration with the various feature starved help desk knowledge bases that we tested from a large number of help desk services.  Frankly, after going through that process I'm kind of stunned how much they charge for such poor offerings.
+I built this in a couple of days out of frustration with the various feature starved knowledge bases that we tested from a large number of help desk services.  Frankly, after going through that process I'm kind of stunned how much they charge for such poor offerings.
 
 This is a WordPress app, built using Bedrock/Trellis and the [Stem Application Framework](https://github.com/stem-press/stem).
 
@@ -16,6 +16,7 @@ This is a WordPress app, built using Bedrock/Trellis and the [Stem Application F
 * Ansible
 * Vagrant
 * Parallels or VirtualBox
+* ACF Pro License
 
 
 ## Development Setup
@@ -53,7 +54,7 @@ To install this for dev/testing:
    ```sh
    pip install passlib
    ```
-7. Vagrant up! (You cand drop the `--provider` part if you are not on macOS and do not have Parallels installed.  If you are on macOS and you aren't using Parallels, consider it because it is much faster that VirtualBox)
+7. Vagrant up! (You can drop the `--provider` part if you are not on macOS and do not have Parallels installed.  If you are on macOS and you aren't using Parallels, consider it because it is much faster that VirtualBox)
    ```sh
    vagrant up --provider=parallels
    ```
@@ -90,9 +91,9 @@ The top level directories in the theme:
 * `public` - All public assets compiled from the `assets` folder
 * `views` - The Laravel blade templates for the entire site
 
-The Stem framework itself is located in the `mu-plugins` directory and the Stem Content package is installed as a plugin.  The Stem Content package provides models for creating ACF Flexibly layout based admin very easily.  You'll see examples of it in the `classes/Content` directory.
+The Stem framework itself is located in the `mu-plugins` directory and the Stem Content package is installed as a plugin.  The Stem Content package provides models for creating ACF Flexible layout based admin very easily.  You'll see examples of it in the `classes/Content` directory.
 
 Eventually we will document Stem, but trust that we use this on every site for our clients, including a whole bunch of Fortune 100 companies.
 
-##Deploying to Production
+## Deploying to Production
 For this, I'll refer you to the [Trellis documentation](https://roots.io/trellis/docs/remote-server-setup/).  It's actually very easy to get going and if you've only used cheap VPS's in the past, it's going to open a whole new set of doors for you.
