@@ -1,1 +1,0 @@
-<?php echo e($post->title); ?><?php /**PATH /srv/www/kb.mediacloud.press/current/web/app/themes/clippy/views/templates/single-article.blade.php ENDPATH**/ ?>

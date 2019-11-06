@@ -34,4 +34,4 @@
         </div>
     </div>
 </div>
-<?php /**PATH /srv/www/kb.mediacloud.press/current/web/app/themes/clippy/views/partials/breadcrumbs.blade.php ENDPATH**/ ?>
+<?php /**PATH /srv/www/clippy.test/current/web/app/themes/clippy/views/partials/breadcrumbs.blade.php ENDPATH**/ ?>

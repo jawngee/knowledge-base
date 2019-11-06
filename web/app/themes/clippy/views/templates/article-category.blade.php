@@ -26,10 +26,14 @@
         <div class="articles-list">
             <div class="section-header">
                 <picture>
-                    @if($currentTerm->icon->mime == 'image/svg+xml')
-                        {!! $currentTerm->icon->img() !!}
+                    @if(!empty($currentTerm->icon))
+                        @if($currentTerm->icon->mime == 'image/svg+xml')
+                            {!! $currentTerm->icon->img() !!}
+                        @else
+                            {!! $currentTerm->icon->img('help-topic-list') !!}
+                        @endif
                     @else
-                        {!! $currentTerm->icon->img('help-topic-list') !!}
+                        Missing Image
                     @endif
                 </picture>
                 <div>

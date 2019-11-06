@@ -104,4 +104,4 @@
         
         <?php echo $__env->yieldContent('scripts'); ?>
     </body>
-</html><?php /**PATH /srv/www/kb.mediacloud.press/current/web/app/themes/clippy/views/layouts/page.blade.php ENDPATH**/ ?>
+</html><?php /**PATH /srv/www/clippy.test/current/web/app/themes/clippy/views/layouts/page.blade.php ENDPATH**/ ?>

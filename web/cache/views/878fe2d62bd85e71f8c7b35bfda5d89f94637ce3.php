@@ -11,12 +11,16 @@
                     <li>
                         <a href="<?php echo e(get_term_link($childTerm->term->term_id)); ?>">
                             <picture>
-                                <?php if($childTerm->icon->mime == 'image/svg+xml'): ?>
-                                <?php echo $childTerm->icon->img(); ?>
+                                <?php if(!empty($childTerm->icon)): ?>
+                                    <?php if($childTerm->icon->mime == 'image/svg+xml'): ?>
+                                    <?php echo $childTerm->icon->img(); ?>
 
+                                    <?php else: ?>
+                                    <?php echo $childTerm->icon->img('help-topic-list'); ?>
+
+                                    <?php endif; ?>
                                 <?php else: ?>
-                                <?php echo $childTerm->icon->img('help-topic-list'); ?>
-
+                                    Missing Image
                                 <?php endif; ?>
                             </picture>
                             <div>
@@ -30,4 +34,4 @@
         </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
-</div><?php /**PATH /srv/www/kb.mediacloud.press/current/web/app/themes/clippy/views/content/help-topics.blade.php ENDPATH**/ ?>
+</div><?php /**PATH /srv/www/clippy.test/current/web/app/themes/clippy/views/content/help-topics.blade.php ENDPATH**/ ?>

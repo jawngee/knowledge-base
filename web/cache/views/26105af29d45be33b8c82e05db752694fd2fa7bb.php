@@ -26,12 +26,16 @@
         <div class="articles-list">
             <div class="section-header">
                 <picture>
-                    <?php if($currentTerm->icon->mime == 'image/svg+xml'): ?>
-                        <?php echo $currentTerm->icon->img(); ?>
+                    <?php if(!empty($currentTerm->icon)): ?>
+                        <?php if($currentTerm->icon->mime == 'image/svg+xml'): ?>
+                            <?php echo $currentTerm->icon->img(); ?>
 
+                        <?php else: ?>
+                            <?php echo $currentTerm->icon->img('help-topic-list'); ?>
+
+                        <?php endif; ?>
                     <?php else: ?>
-                        <?php echo $currentTerm->icon->img('help-topic-list'); ?>
-
+                        Missing Image
                     <?php endif; ?>
                 </picture>
                 <div>
@@ -57,4 +61,4 @@
     </div>
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('templates.content-page', ['preContent' => $preContent, 'mainContent' => $mainContent, 'postContent' => $postContent ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /srv/www/kb.mediacloud.press/current/web/app/themes/clippy/views/templates/article-category.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('templates.content-page', ['preContent' => $preContent, 'mainContent' => $mainContent, 'postContent' => $postContent ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /srv/www/clippy.test/current/web/app/themes/clippy/views/templates/article-category.blade.php ENDPATH**/ ?>

@@ -11,10 +11,14 @@
                     <li>
                         <a href="{{get_term_link($childTerm->term->term_id)}}">
                             <picture>
-                                @if($childTerm->icon->mime == 'image/svg+xml')
-                                {!! $childTerm->icon->img() !!}
+                                @if(!empty($childTerm->icon))
+                                    @if($childTerm->icon->mime == 'image/svg+xml')
+                                    {!! $childTerm->icon->img() !!}
+                                    @else
+                                    {!! $childTerm->icon->img('help-topic-list') !!}
+                                    @endif
                                 @else
-                                {!! $childTerm->icon->img('help-topic-list') !!}
+                                    Missing Image
                                 @endif
                             </picture>
                             <div>

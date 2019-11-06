@@ -104,17 +104,19 @@ $context->onSetup(function() use ($context) {
 			'articles/([^/]+)/page/(\d{1,})/?$' => 'index.php?article-category='.$wp_rewrite->preg_index(1).'&paged='.$wp_rewrite->preg_index(2),
 		];
 
-		foreach($articleCats->terms as $term) {
-			if (empty($term->parent)) {
-				foreach($articleCats->terms as $childTerm) {
-					if ($childTerm->parent === $term->term_id) {
-						$new_rules["articles/{$term->slug}/{$childTerm->slug}/?$"] = 'index.php?article-category='.$childTerm->slug;
-						$new_rules["articles/{$term->slug}/{$childTerm->slug}/page/(\d{1,})/?$"] = 'index.php?article-category='.$childTerm->slug.'&paged='.$wp_rewrite->preg_index(2);
-						$new_rules["articles/{$term->slug}/{$childTerm->slug}/([^/]+)/?$"] = 'index.php?article-category='.$childTerm->slug. '&article=' . $wp_rewrite->preg_index(1);
+		if (!empty($articleCats->terms)) {
+			foreach($articleCats->terms as $term) {
+				if (empty($term->parent)) {
+					foreach($articleCats->terms as $childTerm) {
+						if ($childTerm->parent === $term->term_id) {
+							$new_rules["articles/{$term->slug}/{$childTerm->slug}/?$"] = 'index.php?article-category='.$childTerm->slug;
+							$new_rules["articles/{$term->slug}/{$childTerm->slug}/page/(\d{1,})/?$"] = 'index.php?article-category='.$childTerm->slug.'&paged='.$wp_rewrite->preg_index(2);
+							$new_rules["articles/{$term->slug}/{$childTerm->slug}/([^/]+)/?$"] = 'index.php?article-category='.$childTerm->slug. '&article=' . $wp_rewrite->preg_index(1);
+						}
 					}
-				}
 
-				$new_rules["articles/{$term->slug}/([^/]+)/?$"] = 'index.php?article-category='.$term->slug. '&article=' . $wp_rewrite->preg_index(1);
+					$new_rules["articles/{$term->slug}/([^/]+)/?$"] = 'index.php?article-category='.$term->slug. '&article=' . $wp_rewrite->preg_index(1);
+				}
 			}
 		}
 

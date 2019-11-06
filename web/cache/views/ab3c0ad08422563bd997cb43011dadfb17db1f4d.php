@@ -68,4 +68,4 @@ $wpath = str_replace('/wp/','/',ABSPATH);
 </div>
 <script src="<?php echo e(ILAB_STEM_PUB_JS_URL); ?>/prism.js"></script>
 </body>
-</html><?php /**PATH /srv/www/kb.mediacloud.press/current/web/app/mu-plugins/stem/views/error.blade.php ENDPATH**/ ?>
+</html><?php /**PATH /srv/www/clippy.test/current/web/app/mu-plugins/stem/views/error.blade.php ENDPATH**/ ?>

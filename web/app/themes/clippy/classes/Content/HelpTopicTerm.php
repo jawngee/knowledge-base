@@ -39,6 +39,7 @@ class HelpTopicTerm {
 				return $this->_icon;
 			}
 
+
 			$iconId = get_field('icon', 'article-category_'.$this->_term->term_id);
 			if (!empty($iconId)) {
 				$this->_icon = Attachment::find($iconId);
@@ -70,7 +71,7 @@ class HelpTopicTerm {
 		} else if ($name === 'children') {
 			return isset($this->_children);
 		} else if ($name === 'icon') {
-			return isset($this->_icon);
+			return true;
 		} else if ($name === 'term') {
 			return isset($this->_term);
 		}

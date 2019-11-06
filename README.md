@@ -65,7 +65,10 @@ Once you've logged into the admin:
 
 1. Activate all the plugins
 2. Activate the "Clippy" theme
-3. Import the example data if you want
+3. Import the example data if you want, located in `demo/sample-data.xml`
+4. In Settings -> Reading, set the home page to a static page and select "Media Cloud Knowledge Base"
+5. Enjoy!
+
 
 ## Modifying the Theme CSS
 The theme assets are located in the theme's `assets` folder.  In a terminal change to that directory and type `yarn` to install dependencies.  Once installed, you can:

@@ -1,0 +1,1 @@
+<?php /**PATH /srv/www/clippy.test/current/web/app/themes/clippy/views/partials/analytics-header.blade.php ENDPATH**/ ?>

@@ -11,4 +11,4 @@
             <div class="auto-search-results"></div>
         </form>
     </div>
-</div><?php /**PATH /srv/www/kb.mediacloud.press/current/web/app/themes/clippy/views/content/big-search.blade.php ENDPATH**/ ?>
+</div><?php /**PATH /srv/www/clippy.test/current/web/app/themes/clippy/views/content/big-search.blade.php ENDPATH**/ ?>
