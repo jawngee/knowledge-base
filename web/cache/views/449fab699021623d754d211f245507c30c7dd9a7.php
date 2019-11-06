@@ -63,6 +63,17 @@ for($i = count($toc)  - 1; $i > 0; $i--) {
             <h1 id="<?php echo e(sanitize_title($post->title)); ?>"><?php echo e($post->title); ?></h1>
             <?php echo $content; ?>
 
+
+            <?php if(!empty($post->related) && (count($post->related) > 0)): ?>
+            <div class="related">
+                <h4>Related Articles</h4>
+                <ul>
+                    <?php $__currentLoopData = $post->related; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $related): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <li><a href="<?php echo e($related->permalink); ?>"><?php echo e($related->title); ?></a></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            </div>
+            <?php endif; ?>
         </article>
     </div>
 <?php $__env->stopSection(); ?>

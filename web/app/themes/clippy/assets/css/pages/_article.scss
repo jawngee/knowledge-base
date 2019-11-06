@@ -118,5 +118,30 @@ div.article {
         }
       }
     }
+
+    div.related {
+      @include margins($top: 60px 30px);
+      @include padding($all: 30px 15px);
+      border: 1px solid $light-gray;
+      background-color: $lighter-gray;
+      border-radius: 12px;
+
+      h4 {
+        @include fontSize(18px, 18px);
+        @include margins($bottom: 30px 15px);
+      }
+
+      ul {
+        margin: 0; padding: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-row-gap: 20px;
+
+        li {
+          margin: 0; padding: 0;
+          display: block;
+        }
+      }
+    }
   }
 }

@@ -11,6 +11,7 @@ use StoutLogic\AcfBuilder\FieldsBuilder;
  * Class FAQ
  * @package ClippyKB\Models
  *
+ * @property-read Article[] $related
  */
 class Article extends Post {
 	#region Static Post Properties
@@ -20,6 +21,17 @@ class Article extends Post {
 	 * Perform any related initialization
 	 */
 	public static function initialize() {
+	}
+
+	public static function registerFields() {
+		$builder = new FieldsBuilder(static::postType());
+		$builder
+			->addRelationship('related', ['post_type' => 'article', 'return_format' => 'id'])
+				->setInstructions('Select any articles related to this one.')
+		;
+
+
+		return $builder->build();
 	}
 
 

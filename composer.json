@@ -54,7 +54,7 @@
     "roots/wp-config": "1.0.0",
     "press-bits/media-library-svg-display": "^0.1.2",
     "advanced-custom-fields/advanced-custom-fields-pro": ">=5.8.6",
-    "stem-press/stem": "0.7.9",
+    "stem-press/stem": "0.7.10",
     "stem-press/mail-template": "0.3.1",
     "stem-press/stem-content": ">=0.4.4",
     "ilab/ilab-media-tools": ">=3.2.3",

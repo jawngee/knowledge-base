@@ -62,6 +62,17 @@ for($i = count($toc)  - 1; $i > 0; $i--) {
         <article>
             <h1 id="{{sanitize_title($post->title)}}">{{$post->title}}</h1>
             {!! $content !!}
+
+            @if(!empty($post->related) && (count($post->related) > 0))
+            <div class="related">
+                <h4>Related Articles</h4>
+                <ul>
+                    @foreach($post->related as $related)
+                        <li><a href="{{$related->permalink}}">{{$related->title}}</a></li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
         </article>
     </div>
 @endsection

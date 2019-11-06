@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "636e923ec8f2a902efd7484042cc620c",
+    "content-hash": "1bbf5f35d6afbbefde7524489d2b56a8",
     "packages": [
         {
             "name": "advanced-custom-fields/advanced-custom-fields-pro",
@@ -4287,16 +4287,16 @@
         },
         {
             "name": "stem-press/stem",
-            "version": "0.7.9",
+            "version": "0.7.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stem-press/stem.git",
-                "reference": "4ef0a0a769cd5273696f2b9309d1076a107f4bc3"
+                "reference": "396664ffa9fa0bd534078196e1e6785e7a06790e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stem-press/stem/zipball/4ef0a0a769cd5273696f2b9309d1076a107f4bc3",
-                "reference": "4ef0a0a769cd5273696f2b9309d1076a107f4bc3",
+                "url": "https://api.github.com/repos/stem-press/stem/zipball/396664ffa9fa0bd534078196e1e6785e7a06790e",
+                "reference": "396664ffa9fa0bd534078196e1e6785e7a06790e",
                 "shasum": ""
             },
             "require": {
@@ -4346,7 +4346,7 @@
                 "stem",
                 "wordpress"
             ],
-            "time": "2019-10-30T15:55:57+00:00"
+            "time": "2019-11-06T00:47:47+00:00"
         },
         {
             "name": "stem-press/stem-content",
