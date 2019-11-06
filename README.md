@@ -1,70 +1,95 @@
-# [Bedrock](https://roots.io/bedrock/)
+# Clippy Knowledge Base
 
-[![Packagist](https://img.shields.io/packagist/v/roots/bedrock.svg?style=flat-square)](https://packagist.org/packages/roots/bedrock)
-[![Build Status](https://img.shields.io/circleci/build/gh/roots/bedrock?style=flat-square)](https://circleci.com/gh/roots/bedrock)
-[![Follow Roots](https://img.shields.io/twitter/follow/rootswp.svg?style=flat-square&color=1da1f2)](https://twitter.com/rootswp)
+![logo](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBbBdtY0iJQNui3bbMXg_gk4n_JDAq7KaxMZPNgLaU21nB5XKh&s)
 
-Bedrock is a modern WordPress stack that helps you get started with the best development tools and project structure.
+This is the knowledge base app being used on [Media Cloud Support](https://kb.mediacloud.press/).  
 
-Much of the philosophy behind Bedrock is inspired by the [Twelve-Factor App](http://12factor.net/) methodology including the [WordPress specific version](https://roots.io/twelve-factor-wordpress/).
+I built this out of frustration with the various feature starved help desk knowledge bases that we tested from a large number of help desk services.
 
-## Features
-
-* Better folder structure
-* Dependency management with [Composer](https://getcomposer.org)
-* Easy WordPress configuration with environment specific files
-* Environment variables with [Dotenv](https://github.com/vlucas/phpdotenv)
-* Autoloader for mu-plugins (use regular plugins as mu-plugins)
-* Enhanced security (separated web root and secure passwords with [wp-password-bcrypt](https://github.com/roots/wp-password-bcrypt))
+This is a WordPress app, built using Bedrock/Trellis and the [Stem Application Framework](https://github.com/stem-press/stem).
 
 ## Requirements
 
 * PHP >= 7.1
 * Composer - [Install](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
+* Python
+* Ansible
+* Vagrant
+* Parallels or VirtualBox
 
-## Installation
 
-1. Create a new project:
+## Development Setup
+To install this for dev/testing:
+
+1. Clone trellis:
     ```sh
-    $ composer create-project roots/bedrock
+    git clone https://github.com/jawngee/knowledge-base-trellis trellis
+    rm -rf trellis/.git
     ```
-2. Update environment variables in the `.env` file. Wrap values that may contain non-alphanumeric characters with quotes, or they may be incorrectly parsed.
-  * Database variables
-    * `DB_NAME` - Database name
-    * `DB_USER` - Database user
-    * `DB_PASSWORD` - Database password
-    * `DB_HOST` - Database host
-    * Optionally, you can define `DATABASE_URL` for using a DSN instead of using the variables above (e.g. `mysql://user:password@127.0.0.1:3306/db_name`)
-  * `WP_ENV` - Set to environment (`development`, `staging`, `production`)
-  * `WP_HOME` - Full URL to WordPress home (https://example.com)
-  * `WP_SITEURL` - Full URL to WordPress including subdirectory (https://example.com/wp)
-  * `AUTH_KEY`, `SECURE_AUTH_KEY`, `LOGGED_IN_KEY`, `NONCE_KEY`, `AUTH_SALT`, `SECURE_AUTH_SALT`, `LOGGED_IN_SALT`, `NONCE_SALT`
-    * Generate with [wp-cli-dotenv-command](https://github.com/aaemnnosttv/wp-cli-dotenv-command)
-    * Generate with [our WordPress salts generator](https://roots.io/salts.html)
-3. Add theme(s) in `web/app/themes/` as you would for a normal WordPress site
-4. Set the document root on your webserver to Bedrock's `web` folder: `/path/to/site/web/`
-5. Access WordPress admin at `https://example.com/wp/wp-admin/`
+2. Update the trellis config in `trellis/group_vars/all/vault.yml`:
+   1. Set the `act_pro_key` to your ACF Pro license
+   2. If you are using Crisp, set the `CRISP_TOKEN`, `CRISP_KEY`, `CRISP_BEACON_ID`, `RECAPTCHA_SITE` and `RECAPTCHA_SERVER` (You need to use Recaptcha v2)
+3. Clone this repo:
+    ```sh
+    git clone https://github.com/jawngee/knowledge-base site
+    rm -rf site/.git
+    ```
+4. Update composer deps:
+    ```sh
+    cd site
+    composer update
+    ```
+5. Switch to the trellis directory:
+    ```sh
+    cd trellis
+    ```
+5. Install ansible.  I like to use Python's virtualenv for each Trellis project so that the ansible version is specific to the project:
+    ```sh
+    virtualenv ansible
+    source ansible/bin/activate
+    pip install ansible
+    ```
+6. If you are on macOS, you'll need to install passlib:
+   ```sh
+   pip install passlib
+   ```
+7. Vagrant up! (You cand drop the `--provider` part if you are not on macOS and do not have Parallels installed.  If you are on macOS and you aren't using Parallels, consider it because it is much faster that VirtualBox)
+   ```sh
+   vagrant up --provider=parallels
+   ```
+8. Grab a coffee
+9. Once it's setup, you will be able to access it at [http://clippy.test/wp/wp-admin/](http://clippy.test/wp/wp-admin/) the login/pass is `admin` / `admin`
 
-## Documentation
+## WordPress Setup
+Once you've logged into the admin:
 
-Bedrock documentation is available at [https://roots.io/bedrock/docs/](https://roots.io/bedrock/docs/).
+1. Activate all the plugins
+2. Activate the "Clippy" theme
+3. Import the example data if you want
 
-## Contributing
+## Modifying the Theme CSS
+The theme assets are located in the theme's `assets` folder.  In a terminal change to that directory and type `yarn` to install dependencies.  Once installed, you can:
 
-Contributions are welcome from everyone. We have [contributing guidelines](https://github.com/roots/guidelines/blob/master/CONTRIBUTING.md) to help you get started.
+* `npm run watch` - Starts browsersync for hot/live reloading
+* `npm run dev` - To create a development build (includes .map's)
+* `npm run production` - To create a production build (excludes .map's)
 
-## Bedrock sponsors
+All of the javascript is built using typescript, jQuery is only used for ajax because I'm lazy.
 
-Help support our open-source development efforts by [becoming a patron](https://www.patreon.com/rootsdev).
+##How The Theme Is Built
+The theme is built using Stem, which is our in-house app framework for WordPress.  There is no formal documentation for it, though the source is liberally commented and the structure should make sense if you've ever worked with Laravel, Symfony or another MVC framework.
 
-<a href="https://kinsta.com/?kaid=OFDHAJIXUDIV"><img src="https://cdn.roots.io/app/uploads/kinsta.svg" alt="Kinsta" width="200" height="150"></a> <a href="https://k-m.com/"><img src="https://cdn.roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="200" height="150"></a> <a href="https://scaledynamix.com/"><img src="https://cdn.roots.io/app/uploads/scale-dynamix.svg" alt="Scale Dynamix" width="200" height="150"></a>
+The top level directories in the theme:
 
-## Community
+* `assets` - Contains all the SCSS, TypeScript, images, fonts, etc.
+* `classes` - Contains all the controllers, models, content models
+* `config` - Stem is a very config heavy framework.  Each config file is heavily commented.
+* `public` - All public assets compiled from the `assets` folder
+* `views` - The Laravel blade templates for the entire site
 
-Keep track of development and community news.
+The Stem framework itself is located in the `mu-plugins` directory and the Stem Content package is installed as a plugin.  The Stem Content package provides models for creating ACF Flexibly layout based admin very easily.  You'll see examples of it in the `classes/Content` directory.
 
-* Participate on the [Roots Discourse](https://discourse.roots.io/)
-* Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-* Read and subscribe to the [Roots Blog](https://roots.io/blog/)
-* Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
-* Listen to the [Roots Radio podcast](https://roots.io/podcast/)
+Eventually we will document Stem, but trust that we use this on every site for our clients, including a whole bunch of Fortune 100 companies.
+
+##Deploying to Production
+For this, I'll refer you to the [Trellis documentation](https://roots.io/trellis/docs/remote-server-setup/).  It's actually very easy to get going and if you've only used cheap VPS's in the past, it's going to open a whole new set of doors for you.
